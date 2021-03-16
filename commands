@@ -1,0 +1,12 @@
+docker ps
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+
+
+### entrar como root pra executar comandos docker
+#Faz o download da imagem
+docker-compose up
+
+docker ps -a
+
+docker-compose down
+
