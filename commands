@@ -10,3 +10,9 @@ docker ps -a
 
 docker-compose down
 
+docker stop <<id>>
+docker rm <<id>>
+
+# db
+show table status
+    innodb suporte a transacao rollback
