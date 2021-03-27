@@ -1,6 +1,7 @@
 package academy.devdojo.springbootessentials.repository;
 
 import academy.devdojo.springbootessentials.domain.Anime;
+import academy.devdojo.springbootessentials.util.AnimeCreator;
 import lombok.extern.log4j.Log4j2;
 import org.apache.tomcat.util.bcel.Const;
 import org.assertj.core.api.Assertions;
@@ -26,7 +27,7 @@ class AnimeRepositoryTest {
     @Test
     @DisplayName("Save persists anime when successful")
     void save_PersistAnime_WhenSuccessful(){
-        Anime animeToBeSaved = createAnime();
+        Anime animeToBeSaved = AnimeCreator.createAnimeToBeSaved();
 
         Anime animeSaved = this.animeRepository.save(animeToBeSaved);
 
@@ -40,7 +41,7 @@ class AnimeRepositoryTest {
     @Test
     @DisplayName("Save updates anime when successful")
     void save_UpdateAnime_WhenSuccessful(){
-        Anime animeToBeSaved = createAnime();
+        Anime animeToBeSaved = AnimeCreator.createAnimeToBeSaved();
 
         Anime animeSaved = this.animeRepository.save(animeToBeSaved);
 
@@ -58,7 +59,7 @@ class AnimeRepositoryTest {
     @Test
     @DisplayName("Save removes anime when successful")
     void delete_RemovesAnime_WhenSuccessful(){
-        Anime animeToBeSaved = createAnime();
+        Anime animeToBeSaved = AnimeCreator.createAnimeToBeSaved();
 
         Anime animeSaved = this.animeRepository.save(animeToBeSaved);
 
@@ -72,7 +73,7 @@ class AnimeRepositoryTest {
     @Test
     @DisplayName("Find By Name returns list of anime when successful")
     void findByName_ReturnsListOfAnime_WhenSuccessful(){
-        Anime animeToBeSaved = createAnime();
+        Anime animeToBeSaved = AnimeCreator.createAnimeToBeSaved();
 
         Anime animeSaved = this.animeRepository.save(animeToBeSaved);
 
@@ -91,12 +92,6 @@ class AnimeRepositoryTest {
         List<Anime> animes = this.animeRepository.findByName("Pokemon");
 
         Assertions.assertThat(animes).isEmpty();
-    }
-
-    private Anime createAnime(){
-        return Anime.builder()
-                .name("Hajime no Ippo")
-                .build();
     }
 
     @Test
